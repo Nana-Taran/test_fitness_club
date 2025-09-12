@@ -17,13 +17,26 @@ public class TrainerRepository {
         database.put(maxId, trainer);
         return trainer;
     }
+
     public List<Trainer> findAll() {
-        return  new ArrayList<>(database.values());
+        return new ArrayList<>(database.values());
     }
 
-  public void deleteById(Long id) {
+    public Trainer findById(Long id) {
+        return database.get(id);
+    }
+
+    public Trainer findByName(String name) {
+        if (name == null) return null;
+        return database.values().stream()
+                .filter(t -> name.equals(t.getName()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void deleteById(Long id) {
         database.remove(id);
-
-  }
-
+    }
 }
+
+
