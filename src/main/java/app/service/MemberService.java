@@ -2,7 +2,7 @@ package app.service;
 
 import app.damain.Member;
 import app.exceptions.MemberNotFoundException;
-import app.exceptions.MemberRestotrException;
+import app.exceptions.MemberRestoreException;
 import app.exceptions.MemberSaveException;
 import app.repository.MemberRepository;
 
@@ -77,7 +77,7 @@ public class MemberService {
     }
     public void restoreByName(String name) {
         if (name == null || !name.trim().isEmpty()){
-            throw new MemberRestotrException("Введите корректное имя");
+            throw new MemberRestoreException("Введите корректное имя");
 
         }
         Member member = repository.findByName(name);
